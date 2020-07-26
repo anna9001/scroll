@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+html{
+	font-family:font-family: 'Noto Sans KR', sans-serif;
+	font-size:14px;
+}
+
+body{
+	overflow-x : hidden; /* 가로 스크롤 방지 */
+	color: rgb(29,29,31);
+	letter-spacing: -0.05em;
+	background-color:white;
+}
+
+.global-nav{
+	height:44px;
+}
+
+/* max i */
+.global-nav-items{
+	max-width:1000px;
+	margin:0 auto;
+	display:flex;
+	justify-content:space-between;
+	align-items:center	
+} 
