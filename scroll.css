@@ -22,13 +22,14 @@ a{
 }
 .global-nav{
 	height:44px;
+	padding: 0 1rem; /* 좌우 패딩 설정 */
 }
+
 .local-nav{
 	height:52px;
 	border-bottom:1px solid #ddd;
 }
 
-/* max i */
 .global-nav-links,
 .local-nav-links {
 	display:flex;
@@ -55,5 +56,39 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 .local-nav-links a:not(.product-name){
 	margin-left: 2em;  /* 상위 요소 크기의 몇 배인지 */
 }
+
+.scroll-section{
+	padding-top:50vh; /* viewport height (브라우처 창의 50%만큼 padding top 설정) */
+}
+.scroll-section-0{
+	font-size:4rem;
+	text-align:center;
+}
+
+.main-message{
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	heigth:3em;
+	margin:5px 0;
+	font-size:2.5rem;
+	backgroud-color: rgb(0,0,0,0.3)
+}
+
+.main-message p{
+	font-weight:bold;
+	text-align:center;
+	line-height:1.2;
+}
+
+
+
+
+
+
+
+
+
+
 
 
