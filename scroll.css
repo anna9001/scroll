@@ -12,15 +12,48 @@ body{
 	background-color:white;
 }
 
+p{
+	line-height:1.6;	
+}
+
+a{
+	color: rgb(29,29,31);
+	text-decoration:none;
+}
 .global-nav{
 	height:44px;
 }
+.local-nav{
+	height:52px;
+	border-bottom:1px solid #ddd;
+}
 
 /* max i */
-.global-nav-items{
+.global-nav-links,
+.local-nav-links {
+	display:flex;
+	align-items:center;	
+	height:100%;
 	max-width:1000px;
 	margin:0 auto;
-	display:flex;
-	justify-content:space-between;
-	align-items:center	
+	
 } 
+.global-nav-links{
+	justify-content:space-between; /* flex 메인축 정렬 */
+}
+/* magin left right auto 로 하면 자리를 전부 사용하겠다는 것  
+airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*/
+.local-nav-links .product-name{ /*.product-name 만 쓰면 아래 .local-nav-links a에서 우선순위 밀려 font 적용 안됨  */
+	margin-right:auto;
+	font-size:1.4rem;
+	font-weight:bold;
+}
+.local-nav-links a{
+	font-size:0.8rem; /* 문서의 최상위 요소, 즉 html 요소의 크기의 몇 배인지 */
+}
+
+.local-nav-links a:not(.product-name){
+	margin-left: 2em;  /* 상위 요소 크기의 몇 배인지 */
+}
+
+
