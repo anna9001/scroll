@@ -246,15 +246,22 @@
 	function scrollLoop(){
 		enterNewScene = false;
 		prevScrollHeight =0;
+		console.log('cur')
+		console.log(currentScene);
+		console.log('prev')
+		console.log(prevScrollHeight);
+		
 		for(let i=0;i< currentScene;i++){
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
-		console.log(currentScene);
-		console.log(sceneInfo[currentScene]);
 		
 		if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight){
 			enterNewScene = true;
 			currentScene++;
+			console.log('22cur')
+			console.log(currentScene);
+			console.log('22prev')
+			console.log(prevScrollHeight);
 			document.body.setAttribute('id',`show-scene-section-${currentScene}`);
 		}
 		if(yOffset < prevScrollHeight){
