@@ -87,12 +87,21 @@
 	function setLayout(){
 		//각 스크롤 섹션 높이 설정
 		for(let i=0;i<sceneInfo.length;i++){
+			
 			if(sceneInfo[i].type === 'sticky'){
 				sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight; //전체 창 높이
+				console.log(' sticky -- sceneInfo[i].heightNum')
+				console.log(sceneInfo[i].heightNum);
+				console.log(sceneInfo[i].scrollHeight)
 			}else if(sceneInfo[i].type === 'normal'){
 				sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
+				console.log(' normal -- sceneInfo[i].heightNum')
+				console.log(sceneInfo[i].heightNum);
+				console.log(sceneInfo[i].scrollHeight)
 			}
-			sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;			
+			console.log(sceneInfo[i].objs.container.style.height)
+			sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;	
+			
 		}
 		
 		//새로고침일 경우 현재 씬 맞추기
@@ -246,6 +255,7 @@
 	function scrollLoop(){
 		enterNewScene = false;
 		prevScrollHeight =0;
+		
 		console.log('cur')
 		console.log(currentScene);
 		console.log('prev')
