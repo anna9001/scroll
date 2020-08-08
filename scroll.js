@@ -124,13 +124,13 @@
 	function scrollLoop(){
 		enterNewScene = false;
 		prevScrollHeight =0;
-		console.log('--scrollLoop--')
+		/*console.log('--scrollLoop--')
 		console.log('currentScene')
 		console.log(currentScene)
 		console.log('prevScrollHeight')
 		console.log(prevScrollHeight)
 		console.log('yOffset')
-		console.log(yOffset)
+		console.log(yOffset)*/
 		
 		for(let i=0;i< currentScene;i++){
 			prevScrollHeight += sceneInfo[i].scrollHeight;
@@ -158,9 +158,15 @@
 		const scrollHeight = sceneInfo[currentScene].scrollHeight;
 		//현재 씬 전체에서 스크롤된 범위(현재 위치 )를 비율로 구하기 0~1 사이의 값
 		let scollRatio= currentYOffset / scrollHeight;
+	
+		
 		console.log('--calcValues--')	
+		console.log('currentYOffset')		
+		console.log(currentYOffset)		
 		console.log('scollRatio')
 		console.log(scollRatio)
+		console.log('values')
+		console.log(values)
 		if( values.length === 3 ){
 			
 			//start~end 사이 애니메이션 실행
@@ -187,6 +193,7 @@
 		}else { 
 			//opacity 마지막값 - 첫번째값 = 전체값 
 			// 200/3000 =15 * (1-0) + 0 = 1 
+			console.log('else')
 			rv = scollRatio * ( values[1]-values[0] ) + values[0];	
 		}
 		console.log('rv')
@@ -201,7 +208,7 @@
 		const currentYOffset = yOffset - prevScrollHeight ;
 		const scrollHeight = sceneInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight ;// 현재씬에서의 현재위치 /현재씬의 전체 scrollHeight
-		console.log('--scrollLoop--')
+		/*console.log('--scrollLoop--')
 		console.log('currentScene')
 		console.log(currentScene)
 		console.log('currentYOffset');
@@ -210,7 +217,7 @@
 		console.log(scrollHeight);
 		console.log('scrollRatio');
 		console.log(scrollRatio);
-		
+		*/
 		
 		switch(currentScene){
 			case 0:
