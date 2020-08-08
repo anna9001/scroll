@@ -85,20 +85,13 @@
 	];
 	
 	function setLayout(){
-		console.log('layout????')
 		//각 스크롤 섹션 높이 설정
 		for(let i=0;i<sceneInfo.length;i++){
 			
 			if(sceneInfo[i].type === 'sticky'){
 				sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight; //전체 창 높이
-				console.log(' sticky -- sceneInfo[i].heightNum')
-				console.log(sceneInfo[i].heightNum);
-				console.log(sceneInfo[i].scrollHeight)
 			}else if(sceneInfo[i].type === 'normal'){
 				sceneInfo[i].scrollHeight = sceneInfo[i].objs.container.offsetHeight;
-				console.log(' normal -- sceneInfo[i].heightNum')
-				console.log(sceneInfo[i].heightNum);
-				console.log(sceneInfo[i].scrollHeight)
 			}
 			console.log(sceneInfo[i].objs.container.style.height)
 			sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;	
@@ -147,6 +140,41 @@
 		return rv;
 	}
 
+	//메뉴 높이가 스크롤에 포함되지 않도록  css 로 고정값을 주면(absolute,top,left) 됨
+	
+	let yOffset = window.pageYOffset ; //window.pageYOffset 대신 사용할 변수
+	let prevScrollHeight =0 ; //지금까지 내려온 스크롤 합
+	let currentScene = 0 ; //현재 활성화된 scene 
+	let enterNewScene = false; //새로운 씬이 시작되는 순간 true -- 씬 변화시 음수 차단용
+	
+	/* 
+	 	yoffset 과 prevscroll 을 비교해서 scenecurrent 찾아 
+	 */
+	function scrollLoop(){
+		enterNewScene = false;
+		prevScrollHeight =0;
+		
+		for(let i=0;i< currentScene;i++){
+			prevScrollHeight += sceneInfo[i].scrollHeight;
+		}
+		
+		if(yOffset > (prevScrollHeight + sceneInfo[currentScene].scrollHeight)){
+			enterNewScene = true;
+			currentScene++;
+			document.body.setAttribute('id',`show-scene-section-${currentScene}`);
+		}
+		if(yOffset < prevScrollHeight){
+			enterNewScene = true;
+			if(curreuntScene==0) return; //웹에서 top에서 바운스 될때 yoffset이 -값이 나와 에러되지 않도록 방지
+			currentScene--;
+			document.body.setAttribute('id',`show-scene-section-${currentScene}`);
+		}
+		if(enterNewScene) return;
+		
+		playAnimation();
+	}
+	
+	
 	//현재 씬 안에 요소들 컨트롤
 	function playAnimation(){
 		const objs = sceneInfo[currentScene].objs;
@@ -242,56 +270,6 @@
 		}
 	}
 	//키 프레임 : 애니메이션의 변화가 있는 지점
-	
-	//메뉴 높이가 스크롤에 포함되지 않도록  css 로 고정값을 주면(absolute,top,left) 됨
-	
-	let yOffset = window.pageYOffset ; //window.pageYOffset 대신 사용할 변수
-	let prevScrollHeight =0 ; //지금까지 내려온 스크롤 합
-	let currentScene = 0 ; //현재 활성화된 scene 
-	let enterNewScene = false; //새로운 씬이 시작되는 순간 true -- 씬 변화시 음수 차단용
-	
-	/* 
-	 	yoffset 과 prevscroll 을 비교해서 scenecurrent 찾아 
-	 */
-	function scrollLoop(){
-		enterNewScene = false;
-		prevScrollHeight =0;
-		
-		console.log('cur')
-		console.log(currentScene);
-		console.log('prev')
-		console.log(prevScrollHeight);
-		console.log('yOffset')
-		console.log(yOffset);
-		
-		
-		for(let i=0;i< currentScene;i++){
-			prevScrollHeight += sceneInfo[i].scrollHeight;
-		}
-		
-		if(yOffset > (prevScrollHeight + sceneInfo[currentScene].scrollHeight)){
-			enterNewScene = true;
-			currentScene++;
-			console.log('22cur')
-			console.log(currentScene);
-			console.log('22prev')
-			console.log(prevScrollHeight);
-			console.log('sceneInfo[currentScene].scrollHeight')
-			console.log(sceneInfo[currentScene].scrollHeight);
-			
-			document.body.setAttribute('id',`show-scene-section-${currentScene}`);
-		}
-		if(yOffset < prevScrollHeight){
-			enterNewScene = true;
-			if(curreuntScene==0) return; //웹에서 top에서 바운스 될때 yoffset이 -값이 나와 에러되지 않도록 방지
-			currentScene--;
-			document.body.setAttribute('id',`show-scene-section-${currentScene}`);
-		}
-		if(enterNewScene) return;
-		
-		playAnimation();
-	}
-	
 	
 	
 	//window.addEventListner('DOMContentLoaded',setLayout); //HTML 객체 로드만 되면 실행, load 보다 빠름
