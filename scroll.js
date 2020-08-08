@@ -85,6 +85,7 @@
 	];
 	
 	function setLayout(){
+		console.log('layout????')
 		//각 스크롤 섹션 높이 설정
 		for(let i=0;i<sceneInfo.length;i++){
 			
