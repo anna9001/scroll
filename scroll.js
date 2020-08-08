@@ -110,36 +110,7 @@
 		document.body.setAttribute('id',`show-scene-section-${currentScene}`);
 	}
 
-	//values--	messageA_opacity : [0,1, {start: 0.1 , end: 0.2}], 
-	function calcValues( values, currentYOffset ){ //현재 스크롤의 opacity,현재 씬안에서 스크롤위치
-		let rv;
-		const scrollHeight = sceneInfo[currentScene].scrollHeight;
-		//현재 씬 전체에서 스크롤된 범위(현재 위치 )를 비율로 구하기 0~1 사이의 값
-		let scollRatio= currentYOffset / scrollHeight;
-		
-		if( values.length === 3 ){
-			//start~end 사이 애니메이션 실행
-			const partScrollStart = values[2].start * scrollHeight; //start: 0.1 * 3000
-			const partScrollEnd = values[2].end * scrollHeight; // end: 0.2 * 3000
-			const partScrollHeight = partScrollEnd - partScrollStart ; //600-300 
-			
-			if(currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd){
-				rv = ( currentYOffset - partScrollStart ) / partScrollHeight  * ( values[1]-values[0] ) + values[0];
-			}else if(currentYOffset < partScrollStart ){
-				rv=  values[0];
-			}else if(currentYOffset > partScrollEnd ){
-				rv=  values[1];
-			}
-			
-		}else { 
-			//opacity 마지막값 - 첫번째값 = 전체값 
-			// 200/3000 =15 * (1-0) + 0 = 1 
-			rv = scollRatio * ( values[1]-values[0] ) + values[0];	
-		}
-		
-		return rv;
-	}
-
+	
 	//메뉴 높이가 스크롤에 포함되지 않도록  css 로 고정값을 주면(absolute,top,left) 됨
 	
 	let yOffset = window.pageYOffset ; //window.pageYOffset 대신 사용할 변수
@@ -181,7 +152,48 @@
 		playAnimation();
 	}
 	
-	
+	//values--	messageA_opacity : [0,1, {start: 0.1 , end: 0.2}], 
+	function calcValues( values, currentYOffset ){ //현재 스크롤의 opacity,현재 씬안에서 스크롤위치
+		let rv;
+		const scrollHeight = sceneInfo[currentScene].scrollHeight;
+		//현재 씬 전체에서 스크롤된 범위(현재 위치 )를 비율로 구하기 0~1 사이의 값
+		let scollRatio= currentYOffset / scrollHeight;
+		console.log('--calcValues--')	
+		console.log('scollRatio')
+		console.log(scollRatio)
+		if( values.length === 3 ){
+			
+			//start~end 사이 애니메이션 실행
+			const partScrollStart = values[2].start * scrollHeight; //start: 0.1 * 3000
+			const partScrollEnd = values[2].end * scrollHeight; // end: 0.2 * 3000
+			const partScrollHeight = partScrollEnd - partScrollStart ; //600-300 
+			console.log('partScrollStart')	
+			console.log(partScrollStart)	
+			console.log('partScrollEnd')
+			console.log(partScrollEnd)
+			console.log('partScrollHeight')	
+			console.log(partScrollHeight)	
+			if(currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd){
+				console.log('if')
+				rv = ( currentYOffset - partScrollStart ) / partScrollHeight  * ( values[1]-values[0] ) + values[0];
+			}else if(currentYOffset < partScrollStart ){
+				console.log('else if1')
+				rv=  values[0];
+			}else if(currentYOffset > partScrollEnd ){
+				console.log('else if2')
+				rv=  values[1];
+			}
+			
+		}else { 
+			//opacity 마지막값 - 첫번째값 = 전체값 
+			// 200/3000 =15 * (1-0) + 0 = 1 
+			rv = scollRatio * ( values[1]-values[0] ) + values[0];	
+		}
+		console.log('rv')
+		console.log(rv)
+		return rv;
+	}
+
 	//현재 씬 안에 요소들 컨트롤
 	function playAnimation(){
 		const objs = sceneInfo[currentScene].objs;
@@ -189,6 +201,7 @@
 		const currentYOffset = yOffset - prevScrollHeight ;
 		const scrollHeight = sceneInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight ;// 현재씬에서의 현재위치 /현재씬의 전체 scrollHeight
+		console.log('--scrollLoop--')
 		console.log('currentScene')
 		console.log(currentScene)
 		console.log('currentYOffset');
