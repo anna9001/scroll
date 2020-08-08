@@ -269,9 +269,9 @@
 	
 	
 	//window.addEventListner('DOMContentLoaded',setLayout); //HTML 객체 로드만 되면 실행, load 보다 빠름
-	window.addEventListner('load',setLayout);
-	window.addEventListner('resize',setLayout);
-	window.addEventListner('scroll',()=>{
+	document.addEventListener('load',setLayout);
+	document.addEventListener('resize',setLayout);
+	document.addEventListener('scroll',()=>{
 		yOffset = window.pageYOffset; //현재 페이지 스크롤 위치
 		scrollLoop();
 	});
