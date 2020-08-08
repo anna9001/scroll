@@ -123,11 +123,11 @@
 			const partScrollEnd = values[2].end * scrollHeight; // end: 0.2 * 3000
 			const partScrollHeight = partScrollEnd - partScrollStart ; //600-300 
 			
-			if(currentYoffset >= partScrollStart && currentYoffset <= partScrollEnd){
+			if(currentYOffset >= partScrollStart && currentYOffset <= partScrollEnd){
 				rv = ( currentYOffset - partScrollStart ) / partScrollHeight  * ( values[1]-values[0] ) + values[0];
-			}else if(currentYoffset < partScrollStart ){
+			}else if(currentYOffset < partScrollStart ){
 				rv=  values[0];
-			}else if(currentYoffset > partScrollEnd ){
+			}else if(currentYOffset > partScrollEnd ){
 				rv=  values[1];
 			}
 			
