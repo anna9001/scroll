@@ -153,7 +153,8 @@
 	function scrollLoop(){
 		enterNewScene = false;
 		prevScrollHeight =0;
-		
+		console.log('currentScene')
+		console.log(currentScene)
 		for(let i=0;i< currentScene;i++){
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
@@ -182,6 +183,16 @@
 		const currentYOffset = yOffset - prevScrollHeight ;
 		const scrollHeight = sceneInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight ;// 현재씬에서의 현재위치 /현재씬의 전체 scrollHeight
+		console.log('currentScene')
+		console.log(currentScene)
+		console.log('currentYOffset');
+		console.log(currentYOffset);
+		console.log('scrollHeight');
+		console.log(scrollHeight);
+		console.log('scrollRatio');
+		console.log(scrollRatio);
+		
+		
 		switch(currentScene){
 			case 0:
 				/*const messageA_opacity_in = calcValues( values.messageA_opacity_in ,  currentYOffset );
