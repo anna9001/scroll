@@ -179,7 +179,7 @@
 	function playAnimation(){
 		const objs = sceneInfo[currentScene].objs;
 		const values = sceneInfo[currentScene].values;
-		const currentYOffset = yOffset - prevScollHeight ;
+		const currentYOffset = yOffset - prevScrollHeight ;
 		const scrollHeight = sceneInfo[currentScene].scrollHeight;
 		const scrollRatio = currentYOffset / scrollHeight ;// 현재씬에서의 현재위치 /현재씬의 전체 scrollHeight
 		switch(currentScene){
