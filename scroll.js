@@ -249,6 +249,8 @@
 		for(let i=0;i< currentScene;i++){
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
+		console.log(currentScene);
+		console.log(sceneInfo[currentScene]);
 		
 		if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight){
 			enterNewScene = true;
