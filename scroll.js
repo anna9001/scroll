@@ -153,8 +153,14 @@
 	function scrollLoop(){
 		enterNewScene = false;
 		prevScrollHeight =0;
+		console.log('--scrollLoop--')
 		console.log('currentScene')
 		console.log(currentScene)
+		console.log('prevScrollHeight')
+		console.log(prevScrollHeight)
+		console.log('yOffset')
+		console.log(yOffset)
+		
 		for(let i=0;i< currentScene;i++){
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
