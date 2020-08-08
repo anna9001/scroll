@@ -13,7 +13,7 @@
 				messageC : document.querySelector('#scroll-section-0 .main-message.c'),
 				messageD : document.querySelector('#scroll-section-0 .main-message.d'),
 			},
-			value : { //opacity, y값 (translate)
+			values : { //opacity, y값 (translate)
 				messageA_opacity_in : [0,1, {start: 0.1 , end: 0.2}], //{start: 나타나고 end:opacity 가 완전 1이되는 시점}
 				messageA_opacity_out : [1,0, {start: 0.25 , end: 0.3}], //{start: 나타나고 end:없어지는 시점}
 				messageA_translateY_in : [20,0,{start: 0.1 , end: 0.2}], 
