@@ -250,18 +250,24 @@
 		console.log(currentScene);
 		console.log('prev')
 		console.log(prevScrollHeight);
+		console.log('yOffset')
+		console.log(yOffset);
+		
 		
 		for(let i=0;i< currentScene;i++){
 			prevScrollHeight += sceneInfo[i].scrollHeight;
 		}
 		
-		if(yOffset > prevScrollHeight + sceneInfo[currentScene].scrollHeight){
+		if(yOffset > (prevScrollHeight + sceneInfo[currentScene].scrollHeight)){
 			enterNewScene = true;
 			currentScene++;
 			console.log('22cur')
 			console.log(currentScene);
 			console.log('22prev')
 			console.log(prevScrollHeight);
+			console.log('sceneInfo[currentScene].scrollHeight')
+			console.log(sceneInfo[currentScene].scrollHeight);
+			
 			document.body.setAttribute('id',`show-scene-section-${currentScene}`);
 		}
 		if(yOffset < prevScrollHeight){
