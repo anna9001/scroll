@@ -1,7 +1,8 @@
 @charset "UTF-8";
 
+
 html{
-	font-family:font-family: 'Noto Sans KR', sans-serif;
+	font-family:font-family 'Noto Sans KR', sans-serif;
 	font-size:14px;
 }
 
@@ -22,6 +23,7 @@ a{
 }
 .global-nav{
 	position:absolute; /* width 100% 강제 적용해야함  , 메뉴 스크롤 높이 포함 안되게 top, left 함께 static 적용*/
+	z-index:10;
 	top:0;
 	left:0;
 	width:100%;
@@ -31,6 +33,7 @@ a{
 
 .local-nav{
 	position:absolute; /* width 100% 강제 적용해야함  , 메뉴 스크롤 높이 포함 안되게 top, left 함께 적용*/
+	z-index:11;
 	top:45px;
 	left:0;
 	width:100%;
@@ -68,7 +71,11 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 .scroll-section{
 	padding-top:50vh; /* viewport height (브라우처 창의 50%만큼 padding top 설정) */
 }
-.scroll-section-0{
+
+#scroll-section-0 h1{
+	position:relative;
+	z-index:5;
+	top:-10vh;
 	font-size:4rem;
 	text-align:center;
 }
@@ -117,6 +124,7 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 .desc-message{
 	width:50%;
 	font-weight:bold;
+	opacity:0;
 }
 
 .pin{
@@ -163,10 +171,10 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 	background:darkorange;
 }
 .sticky-elem{
-	display:none;
-	posision:top;
-	left:0;
-	width:100%;
+	display: none;
+	position: fixed;
+	left: 0;
+	width: 100%;
 }
 /* bodyID sectionID */
 #show-scene-0 #scroll-section-0 .sticky-elem,
@@ -175,6 +183,18 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 #show-scene-3 #scroll-section-3 .sticky-elem{
 	display:block;
 }
+
+.sticky-elem-canvas{
+	top:0;
+	height:100%;
+}
+
+.sticky-elem-canvas canvas{
+	position:absolute;
+	top:50%;
+	left:50%;
+}
+
 
 /* 기본 mobile  */
 /* desktop */
@@ -204,11 +224,12 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 		width:20%;
 	}
 	
-	#scroll-section2 .b{
-	top:20%;
-	left:53%;
+	#scroll-section-2 .b{
+		top:20%;
+		left:53%;
 	}
-	#scroll-section2 .c{
+	#scroll-section-2 .c{
+		top: 20%;
 		left:55%;
 	}
 	
@@ -219,4 +240,3 @@ airmug pro 를 제외한 요소들 자리 빼고 나머지 다 차지 하겠다*
 		font-size:2rem; /* rem 은 html 폰트에 따른 고정 , vw 는 창크기에 상대적 */
 	}
 } 
-
